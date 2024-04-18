@@ -1,9 +1,6 @@
 const cliente = {empresa: 'Avanade'}
-const dbJSON = require('./db.json')
+const dbJSON = require('./database/db.json')
 
-console.log(dbJSON)
-
-//listar as salas de reunião com agendas e horários disponíveis
 function listarSalasDisponiveis(){
 
     console.log('*************************************************************************');
@@ -25,22 +22,17 @@ function listarSalasDisponiveis(){
     console.log('********************************************************************************');
 }
 
-//listarSalasDisponiveis()
-
 function verificarDisponibilidadeDeSala(salaNome, horario){
-const sala = dbJSON.find(sala => sala.nome === salaNome); 
-if(sala.horarios.includes(horario)){
-    console.log(`A sala ${salaNome} está disponível às ${horario}.`);
-    console.log('********************************************************************************');
-    
-}else{
-    console.log(`Desculpe, a sala ${salaNome} não está disponível às ${horario}. Por favor, verifique outra sala e/ou horário.`)
-    console.log('***********************************************************************************');
+    const sala = dbJSON.find(sala => sala.nome === salaNome); 
+    if(sala.horarios.includes(horario)){
+        console.log(`A sala ${salaNome} está disponível às ${horario}.`);
+        console.log('********************************************************************************');
+        
+    }else{
+        console.log(`Desculpe, a sala ${salaNome} não está disponível às ${horario}. Por favor, verifique outra sala e/ou horário.`)
+        console.log('***********************************************************************************');
+    }
 }
-}
-//verificarDisponibilidadeDeSala('Sala Boa Viagem', '8:00');
-
-//realizar a reserva de sala
 
 function realizarReservaDeSala(salaNome, horario) {
     const sala = dbJSON.find(sala => sala.nome === salaNome); 
@@ -56,12 +48,8 @@ function realizarReservaDeSala(salaNome, horario) {
     return false;
 }
 
- 
-
-//clienteLogadoNoSistema();
-
 listarSalasDisponiveis();
 
 verificarDisponibilidadeDeSala('Sala Boa Viagem', '8:00');
 
-realizarReservaDeSala('Sala Boa Viagem', '9:00'); 
+realizarReservaDeSala('Sala Boa Viagem', '7:00'); 

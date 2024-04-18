@@ -1,0 +1,22 @@
+[
+    {
+        "nome": "Sala Boa Viagem",
+        "capacidadePessoas": 10,
+        "comodidades": ["TV", "internet", "quadro branco", "projetor", "serviço de café/água"],
+        "horarios": ["8:00", "9:00", "10:00", "11:00", "12:00", "13:00","14:00", "15:00", "16:00", "17:00", "18:00"]
+    },
+    
+    {
+        "nome": "Sala Piedade",
+        "capacidadePessoas": 8,
+        "comodidades": ["TV", "internet", "quadro branco", "serviço de café/água"],
+        "horarios": ["8:00", "9:00", "10:00", "11:00", "12:00", "13:00","14:00", "15:00", "16:00", "17:00", "18:00"]
+    },
+    
+    {
+        "nome": "Sala Candeias",
+        "capacidadePessoas": 6,
+        "comodidades": ["TV", "internet", "quadro branco", "serviço de café/água"],
+        "horarios": ["8:00", "9:00", "10:00", "11:00", "12:00", "13:00","14:00", "15:00", "16:00", "17:00", "18:00"]
+    }
+]
