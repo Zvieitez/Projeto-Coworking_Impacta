@@ -1,5 +1,4 @@
-const cliente = {empresa: 'Avanade'}
-const dbJSON = require('./database/db.json')
+const dbJSON = require('./database/db.json');
 
 function listarSalasDisponiveis(){
 
@@ -25,26 +24,29 @@ function listarSalasDisponiveis(){
 function verificarDisponibilidadeDeSala(salaNome, horario){
     const sala = dbJSON.find(sala => sala.nome === salaNome); 
     if(sala.horarios.includes(horario)){
-        console.log(`A sala ${salaNome} está disponível às ${horario}.`);
+        console.log(`A ${salaNome} está disponível às ${horario}.`);
         console.log('********************************************************************************');
-        
     }else{
-        console.log(`Desculpe, a sala ${salaNome} não está disponível às ${horario}. Por favor, verifique outra sala e/ou horário.`)
+        console.log(`Desculpe, a ${salaNome} não está disponível às ${horario}. Por favor, verifique outra sala e/ou horário.`)
         console.log('***********************************************************************************');
     }
 }
 
 function realizarReservaDeSala(salaNome, horario) {
-    const sala = dbJSON.find(sala => sala.nome === salaNome); 
-    if (sala && sala.horarios.includes(horario)) {
-        // Remove o horário reservado dos horários disponíveis
-        sala.horarios = sala.horarios.filter(h => h !== horario);
-        console.log(`A reserva da sala ${salaNome} foi realizada com sucesso para às ${horario}.`);
-        console.log('********************************************************************************');
-        return true;
+    const sala = dbJSON.find(sala => sala.nome === salaNome);
+    if (sala) {
+        const horarioIndex = sala.horarios.indexOf(horario);
+        if (horarioIndex !== -1) {
+            sala.horarios.splice(horarioIndex, 1);
+            console.log(`A reserva da ${salaNome} foi realizada com sucesso para às ${horario}.`);
+            return true;
+        } else {
+            console.log(`Não foi possível realizar sua reserva para às ${horario}. Escolha outro horário ou sala.`);
+        }
+    } else {
+        console.log(`A ${salaNome} não foi encontrada.`);
     }
-    console.log(`Não foi possível realizar sua reserva para às ${horario}. Escolha outro horário ou sala.`);
-    console.log('************************************************************************************');
+    console.log('********************************************************************************');
     return false;
 }
 
